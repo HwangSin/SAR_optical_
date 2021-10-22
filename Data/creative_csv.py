@@ -16,7 +16,6 @@ file_list = listdir(path)
  # ['spring_', 'summer_', 'fall_', 'windter_']
 file_list_py = [file for file in file_list if file.endswith("_")]
 
-# "이미지 전체 glob"
 cwd = path
 image_names = []
 
@@ -55,4 +54,4 @@ for name in new_set_names :
 
 tes.to_csv("datasetfilelist.csv", mode='w', index=False)
 
-## 초기 값 삭제 후 자리 변경하면 됩니다.
+## 초기 값 삭제 후 자리 변경
