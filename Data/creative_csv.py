@@ -39,17 +39,12 @@ for folder in file_list_py:
 new_set_names = [x.replace('_s1', '').replace('_p', '_') for x in image_names]
 
 os.chdir(origin_cwd)
-# csv_path & read_csv
-tes = pd.read_csv("origin_datasetfilelist.csv", header=None)#, delimiter='\t', names=['A'])
-# tes = tes[tes['Index'] !=3] ; tes = tes[tes['Index'] !=2] ; tes = tes[tes['Index'] !=1]
+
+f = open('datasetfilelist.csv', 'w', encoding='utf-8', newline='')
+wr = csv.writer(f)
 
 # 1	s1	s2_cloudFree	s2_cloudy	ROIs1158_spring_101_0.tif
 for name in new_set_names : 
-    new_data ={
-    '0' : '1	s1	s2_cloudFree	s2_cloudy	' + name
-    }
-    tes = tes.append(new_data, ignore_index=True)
+    wr.writerow(['1	s1	s2_cloudFree	s2_cloudy	' + name])
 
-tes.to_csv("datasetfilelist.csv", mode='w', index=False)
-
-## 초기 값 삭제 후 자리 변경
+f.close()
