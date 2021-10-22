@@ -40,11 +40,22 @@ new_set_names = [x.replace('_s1', '').replace('_p', '_') for x in image_names]
 
 os.chdir(origin_cwd)
 
+numbers = np.random.choice(3, 47450, p=[0.7, 0.15, 0.15])
+np.random.shuffle(numbers)
+np.random.shuffle(new_set_names)
+numbers = numbers.tolist()
+
+numbers_list = []
+for n in numbers:
+    numbers_list.append(n+1)    
+numbers_list = list(map(str, numbers_list))
+    
 f = open('datasetfilelist.csv', 'w', encoding='utf-8', newline='')
 wr = csv.writer(f)
 
 # 1	s1	s2_cloudFree	s2_cloudy	ROIs1158_spring_101_0.tif
-for name in new_set_names : 
-    wr.writerow(['1	s1	s2_cloudFree	s2_cloudy	' + name])
+for i, name in enumerate(new_set_names) : 
+#     '1	s1	s2_cloudFree	s2_cloudy	' + name
+    wr.writerow([numbers_list[i]+'	s1	s2_cloudFree	s2_cloudy	' + name])
 
 f.close()
