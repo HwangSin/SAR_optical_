@@ -1,9 +1,7 @@
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 import sys
-from os import rename, listdir
 import os
+from os import listdir
 import glob
 
 origin_cwd = os.getcwd()
